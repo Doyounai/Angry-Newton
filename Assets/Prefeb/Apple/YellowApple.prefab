@@ -311,8 +311,12 @@ MonoBehaviour:
   DeathDelay: 5
   DotSpacingByTime: 0.1
   Damage: 1
+  impactParticle: {fileID: 4039293973293217111, guid: 22ac8a0f8634d7d49abb90ddfa21bcaa, type: 3}
   m_shiftVelocity: 55
   AccDamage: 2
+  redApple:
+    serializedVersion: 2
+    m_Bits: 128
   Trail: {fileID: 2101463132}
   TrailConfig: {fileID: 11400000, guid: 568b1d27de312874e8397eafc510b431, type: 2}
 --- !u!96 &2101463132

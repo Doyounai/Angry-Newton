@@ -14,6 +14,7 @@ public class BlackApple : Apple
     public Image sprite;
     public float explosionDamage = 2;
     public GameObject explosionParticle;
+    public LayerMask redApple;
 
     private void OnDrawGizmos()
     {
@@ -72,6 +73,8 @@ public class BlackApple : Apple
         CameraController.Instance.DefollowTarget();
         GameObject go = Instantiate(explosionParticle, transform.position, Quaternion.identity);
         Destroy(go, 1f);
+
+        SpawnImpactParticle();
         Destroy(gameObject);
     }
 
@@ -79,6 +82,16 @@ public class BlackApple : Apple
     {
         //ExplosionDelay = TimeExplosionCashDelay;
         //state = appleState.crah;
+
+        if (collision.gameObject.CompareTag("Apple"))
+        {
+            if ((redApple.value & (1 << collision.transform.gameObject.layer)) > 0)
+            {
+                Destroy(collision.gameObject);
+                activeSkill();
+            }
+        }
+
         base.OnCollisionEnter(collision);
     }
 }

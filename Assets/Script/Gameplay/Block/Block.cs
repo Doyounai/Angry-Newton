@@ -9,6 +9,8 @@ public class Block : MonoBehaviour
     private Rigidbody rb;
     public float OnDamageInteval;
     public float SelftHitDe = 0.6f;
+    public GameObject dieParticle;
+    public int score = 100;
 
     private bool IsContactApple = false;
     private float damage;
@@ -49,6 +51,12 @@ public class Block : MonoBehaviour
             StopCoroutine("OnContactApple");
         }
     }
+    
+    public void SpawnDieParticle()
+    {
+        GameObject go = Instantiate(dieParticle, transform.position, Quaternion.identity);
+        Destroy(go, 1f);
+    }
 
     IEnumerator OnContactApple()
     {
@@ -57,5 +65,10 @@ public class Block : MonoBehaviour
             _HpManager.TakeDamage(damage);
             yield return new WaitForSeconds(OnDamageInteval);
         }
+    }
+
+    public void getScore()
+    {
+        ScoreManager.Instance.GetScore(score);
     }
 }

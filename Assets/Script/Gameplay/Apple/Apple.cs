@@ -20,6 +20,8 @@ public class Apple : MonoBehaviour
 	public float DeathDelay = 5;
 	public float DotSpacingByTime = 0.1f;
 	public float Damage;
+	public GameObject impactParticle;
+	public bool isItem = false;
 
 	void Awake()
 	{
@@ -28,7 +30,8 @@ public class Apple : MonoBehaviour
 
     protected virtual void Start()
     {
-		DesactivateRb();
+		if(!isItem)	
+			DesactivateRb();
     }
 
 	protected virtual void Update()
@@ -62,12 +65,14 @@ public class Apple : MonoBehaviour
     public void ActivateRb()
 	{
 		rb.isKinematic = false;
+		this.GetComponent<Collider>().enabled = true;
 	}
 
 	public void DesactivateRb()
 	{
 		rb.velocity = Vector3.zero;
 		rb.isKinematic = true;
+		this.GetComponent<Collider>().enabled = false;
 	}
 
     protected virtual void OnCollisionEnter(Collision collision)
@@ -80,12 +85,18 @@ public class Apple : MonoBehaviour
 		StartCoroutine("die");
     }
 
+	private bool firstCash = true;
+
 	public IEnumerator die()
     {
 		yield return new WaitForSeconds(DeathDelay);
 		//Destroy(gameObject);
-		CameraController.Instance.DefollowTarget();
-    }
+		if(firstCash)
+		{ 
+			CameraController.Instance.DefollowTarget();
+			firstCash = false;
+		}
+	}
 
     public IEnumerator doting()
     {
@@ -94,5 +105,21 @@ public class Apple : MonoBehaviour
             AppleDotManager.Instance.CreateNewDot(transform.position);
 			yield return new WaitForSeconds(DotSpacingByTime);
         }
+    }
+
+	public void Grow()
+    {
+        LeanTween.scale(gameObject, transform.localScale * 4, 3f);
+		LeanTween.delayedCall(5f, () =>
+		{
+			SpawnImpactParticle();
+			Destroy(gameObject);
+		});
+    }
+
+	public void SpawnImpactParticle()
+    {
+		GameObject particle = Instantiate(impactParticle, transform.position, Quaternion.identity);
+		Destroy(particle, 1);
     }
 }

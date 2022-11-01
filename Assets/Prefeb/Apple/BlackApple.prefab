@@ -310,6 +310,7 @@ MonoBehaviour:
   DeathDelay: 5
   DotSpacingByTime: 0.1
   Damage: 1
+  impactParticle: {fileID: 4039293973293217111, guid: 22ac8a0f8634d7d49abb90ddfa21bcaa, type: 3}
   radius: 20.1
   power: 950
   TimeExplosionCashDelay: 5
@@ -345,3 +346,6 @@ MonoBehaviour:
   sprite: {fileID: 4828251644041829231}
   explosionDamage: 2
   explosionParticle: {fileID: 4914716930404006884, guid: aed12c224fbc8704d8eaa07a52e88f44, type: 3}
+  redApple:
+    serializedVersion: 2
+    m_Bits: 128

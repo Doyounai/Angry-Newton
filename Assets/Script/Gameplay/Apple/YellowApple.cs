@@ -9,6 +9,7 @@ public class YellowApple : Apple
     public Vector3 shiftedVelocity { get { return rb.velocity + (rb.velocity.normalized * m_shiftVelocity); } }
 
     public int AccDamage;
+    public LayerMask redApple;
 
     //tail
     [Header("Bullet Tail")]
@@ -47,6 +48,19 @@ public class YellowApple : Apple
     protected override void OnCollisionEnter(Collision collision)
     {
         Trail.enabled = false;
+        
+        if (collision.gameObject.CompareTag("Apple"))
+        {
+            if((redApple.value & (1 << collision.transform.gameObject.layer)) > 0)
+            {
+                collision.gameObject.GetComponent<Apple>().Grow();
+
+                SpawnImpactParticle();
+                CameraController.Instance.DefollowTarget();
+                Destroy(gameObject);
+            }
+        }
+
         base.OnCollisionEnter(collision);
     }
 }

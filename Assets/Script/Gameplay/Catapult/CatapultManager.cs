@@ -11,7 +11,7 @@ public class CatapultManager : MonoBehaviour
     public Vector3 appleAlignDirection;
     public float appleMargin;
     public float NextAppleDelay = 1f;
-
+    public int level;
     private void Start()
     {
         controller = GetComponent<CatapultController>();
@@ -26,7 +26,16 @@ public class CatapultManager : MonoBehaviour
     public void SetNextApple()
     {
         if (apples.Count <= 0)
+        {
+            LeanTween.delayedCall(2, () =>
+            {
+                if(PlayerPrefs.GetInt("level" + level, 0) < ScoreManager.Instance.score)
+                    ScoreCall.Instance.saveScore(level, ScoreManager.Instance.score);
+
+                transitionAnimation.Instance.gotoScene("selectLevel");
+            });
             return;
+        }
 
         controller.SetApple(apples[0]);
         apples.RemoveAt(0);
