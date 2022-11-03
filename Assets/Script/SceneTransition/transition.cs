@@ -10,6 +10,6 @@ public class transition : MonoBehaviour
 
     public void randomNewImage()
     {
-        image.sprite = apple[Random.Range(0, apple.Length - 1)];
+        image.sprite = apple[Random.Range(0, apple.Length)];
     }
 }

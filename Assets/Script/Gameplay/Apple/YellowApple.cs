@@ -10,6 +10,7 @@ public class YellowApple : Apple
 
     public int AccDamage;
     public LayerMask redApple;
+    public AudioClip skillSound;
 
     //tail
     [Header("Bullet Tail")]
@@ -41,6 +42,7 @@ public class YellowApple : Apple
         rb.velocity = shiftedVelocity;
         Damage = AccDamage;
         Trail.enabled = true;
+        SoundManger.Instance.PlaySound(skillSound, 1.5f, mixer);
         base.activeSkill();
         base.SetFollowCamera();
     }

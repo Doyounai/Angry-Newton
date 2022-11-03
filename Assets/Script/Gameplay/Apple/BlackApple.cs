@@ -15,6 +15,7 @@ public class BlackApple : Apple
     public float explosionDamage = 2;
     public GameObject explosionParticle;
     public LayerMask redApple;
+    public AudioClip skillSound;
 
     private void OnDrawGizmos()
     {
@@ -41,7 +42,6 @@ public class BlackApple : Apple
         ExplosionDelay -= Time.deltaTime;
 
         float explosionDelayNomalize = ExplosionDelay * (1 / TimeExplosionCashDelay);
-        //GetComponent<MeshRenderer>().material.color = ExplosionColor.Evaluate(explosionDelayNomalize);
         sprite.color = ExplosionColor.Evaluate(explosionDelayNomalize);
 
         if (ExplosionDelay <= 0f)
@@ -75,6 +75,7 @@ public class BlackApple : Apple
         Destroy(go, 1f);
 
         SpawnImpactParticle();
+        SoundManger.Instance.PlaySound(skillSound, 1.5f, mixer);
         Destroy(gameObject);
     }
 

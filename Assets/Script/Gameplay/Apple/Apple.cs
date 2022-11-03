@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Apple : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class Apple : MonoBehaviour
 	public float Damage;
 	public GameObject impactParticle;
 	public bool isItem = false;
+
+	[Header("Sound")]
+	public AudioClip fireSound;
+	public AudioClip impactSound;
+	public AudioClip growingSound;
+	public AudioMixerGroup mixer;
 
 	void Awake()
 	{
@@ -55,6 +62,8 @@ public class Apple : MonoBehaviour
         rb.AddForce(force, ForceMode.Impulse);
 		StartCoroutine("doting");
 		SetFollowCamera();
+
+		SoundManger.Instance.PlaySound(fireSound, 1.5f, mixer);
     }
 
 	protected virtual void SetFollowCamera()
@@ -83,7 +92,9 @@ public class Apple : MonoBehaviour
 		state = appleState.crah;
 		StopCoroutine("doting");
 		StartCoroutine("die");
-    }
+
+		SoundManger.Instance.PlaySound(impactSound, 1.5f, mixer);
+	}
 
 	private bool firstCash = true;
 
@@ -109,6 +120,7 @@ public class Apple : MonoBehaviour
 
 	public void Grow()
     {
+		SoundManger.Instance.PlaySound(growingSound, 1.5f, mixer);
         LeanTween.scale(gameObject, transform.localScale * 4, 3f);
 		LeanTween.delayedCall(5f, () =>
 		{

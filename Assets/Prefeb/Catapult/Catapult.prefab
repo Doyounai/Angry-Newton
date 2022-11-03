@@ -306,6 +306,9 @@ MonoBehaviour:
   m_linePosB: {fileID: 6958200222123795259}
   lineA: {fileID: 6958200220812483999}
   lineB: {fileID: 6958200222123795258}
+  stringDragSound: {fileID: 8300000, guid: 097ba4c2a04985f458acc1bd07f31484, type: 3}
+  fireSound: {fileID: 8300000, guid: 6e4ccb6681d5da84dbf5dcb4dd5a29c9, type: 3}
+  mixer: {fileID: 0}
 --- !u!114 &6958200221429808521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +329,7 @@ MonoBehaviour:
   appleAlignDirection: {x: -1, y: 0, z: 0}
   appleMargin: 10
   NextAppleDelay: 6
+  level: 0
 --- !u!1 &6958200221480247366
 GameObject:
   m_ObjectHideFlags: 0

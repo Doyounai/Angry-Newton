@@ -174,3 +174,5 @@ MonoBehaviour:
   SelftHitDe: 0.6
   dieParticle: {fileID: 4039293973293217111, guid: 22ac8a0f8634d7d49abb90ddfa21bcaa, type: 3}
   score: 100
+  dieSound: {fileID: 8300000, guid: f4a4cd3c0bb95954bb44c7d3da829cd4, type: 3}
+  mixer: {fileID: 0}

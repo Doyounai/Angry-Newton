@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6067425619977940608, guid: 777319eaa58360f499fbdf260de208b5, type: 3}
+      propertyPath: dieSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a57435b343593940afa92b810a6632f, type: 3}
     - target: {fileID: 6067425619977940610, guid: 777319eaa58360f499fbdf260de208b5, type: 3}
       propertyPath: m_RootOrder
       value: 0

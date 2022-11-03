@@ -311,6 +311,11 @@ MonoBehaviour:
   DotSpacingByTime: 0.1
   Damage: 1
   impactParticle: {fileID: 4039293973293217111, guid: 22ac8a0f8634d7d49abb90ddfa21bcaa, type: 3}
+  isItem: 0
+  fireSound: {fileID: 8300000, guid: be4e898e3f7df2146862f9e152a5b9e1, type: 3}
+  impactSound: {fileID: 8300000, guid: f87892ce4f5711d409fc65de955b8c19, type: 3}
+  growingSound: {fileID: 0}
+  mixer: {fileID: 0}
   radius: 20.1
   power: 950
   TimeExplosionCashDelay: 5
@@ -349,3 +354,4 @@ MonoBehaviour:
   redApple:
     serializedVersion: 2
     m_Bits: 128
+  skillSound: {fileID: 8300000, guid: 6eb36d2c742b6644e97b821c32439b72, type: 3}

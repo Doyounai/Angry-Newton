@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Block : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Block : MonoBehaviour
     public float SelftHitDe = 0.6f;
     public GameObject dieParticle;
     public int score = 100;
+    public AudioClip dieSound;
+    public AudioMixerGroup mixer;
 
     private bool IsContactApple = false;
     private float damage;
@@ -54,6 +57,7 @@ public class Block : MonoBehaviour
     
     public void SpawnDieParticle()
     {
+        SoundManger.Instance.PlaySound(dieSound, 1.2f, mixer);
         GameObject go = Instantiate(dieParticle, transform.position, Quaternion.identity);
         Destroy(go, 1f);
     }

@@ -134,6 +134,11 @@ MonoBehaviour:
   DotSpacingByTime: 0.1
   Damage: 1
   impactParticle: {fileID: 4039293973293217111, guid: 22ac8a0f8634d7d49abb90ddfa21bcaa, type: 3}
+  isItem: 0
+  fireSound: {fileID: 8300000, guid: bac739b353a633b47b03aea14c5b840a, type: 3}
+  impactSound: {fileID: 8300000, guid: 228a0cba37ad24f45857d9dbb0fd1316, type: 3}
+  growingSound: {fileID: 8300000, guid: 58edc7ba7438ff04c8c4f5476eae8573, type: 3}
+  mixer: {fileID: 0}
 --- !u!1 &5385078952515680205
 GameObject:
   m_ObjectHideFlags: 0

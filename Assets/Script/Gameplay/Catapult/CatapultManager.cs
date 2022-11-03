@@ -29,10 +29,7 @@ public class CatapultManager : MonoBehaviour
         {
             LeanTween.delayedCall(2, () =>
             {
-                if(PlayerPrefs.GetInt("level" + level, 0) < ScoreManager.Instance.score)
-                    ScoreCall.Instance.saveScore(level, ScoreManager.Instance.score);
-
-                transitionAnimation.Instance.gotoScene("selectLevel");
+                saveScore();
             });
             return;
         }
@@ -40,6 +37,14 @@ public class CatapultManager : MonoBehaviour
         controller.SetApple(apples[0]);
         apples.RemoveAt(0);
         UpdateApplePosition();
+    }
+
+    public void saveScore()
+    {
+        if (PlayerPrefs.GetInt("level" + level, 0) < ScoreManager.Instance.score)
+            ScoreCall.Instance.saveScore(level, ScoreManager.Instance.score);
+
+        transitionAnimation.Instance.gotoScene("selectLevel");
     }
 
     IEnumerator NextApple()

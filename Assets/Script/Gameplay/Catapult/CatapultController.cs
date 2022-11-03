@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CatapultController : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class CatapultController : MonoBehaviour
     Vector3 linePosB { get { return m_linePosB.position; } }
     public LineRenderer lineA;
     public LineRenderer lineB;
+
+    [Header("Sound")]
+    public AudioClip stringDragSound;
+    public AudioClip fireSound;
+    public AudioMixerGroup mixer;
 
     bool isDragging = false;
 
@@ -96,6 +102,8 @@ public class CatapultController : MonoBehaviour
     #region drag
     private void OnDragStart(Vector3 mousePos)
     {
+        SoundManger.Instance.PlaySound(stringDragSound, 1.5f, mixer);
+
         apple.DesactivateRb();
 
         startPoint = cam.ScreenToWorldPoint(mousePos);
@@ -117,6 +125,8 @@ public class CatapultController : MonoBehaviour
 
         lineA.enabled = false;
         lineB.enabled = false;
+
+        SoundManger.Instance.PlaySound(fireSound, 1.5f, mixer);
     }
 
     private void OnDrag(Vector3 mousePos)
